@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
+import { CraftArt, BrandArt, RetailArt, SupplyArt } from "@/components/Motifs";
 
 const bento = [
   { title: "Brand building", body: "Identity, product, and the details that earn trust — from first idea to first sale.", span: "md:col-span-2", tone: "light" },
@@ -17,9 +18,9 @@ const stats = [
 ];
 
 const sectors = [
-  { name: "Consumer Brands", body: "Own-brand products designed for everyday quality and repeat loyalty.", grad: "linear-gradient(135deg,#EAF1FB,#D6E4F7)" },
-  { name: "Online Retail", body: "Direct and marketplace commerce, operated with care from cart to doorstep.", grad: "linear-gradient(135deg,#F3EEFB,#E4D9F7)" },
-  { name: "Sourcing & Supply", body: "Reliable sourcing and distribution that keep quality consistent at scale.", grad: "linear-gradient(135deg,#EAF7F1,#D6F0E4)" },
+  { name: "Consumer Brands", body: "Own-brand products designed for everyday quality and repeat loyalty.", grad: "linear-gradient(135deg,#EAF1FB,#D6E4F7)", art: "brand" },
+  { name: "Online Retail", body: "Direct and marketplace commerce, operated with care from cart to doorstep.", grad: "linear-gradient(135deg,#F3EEFB,#E4D9F7)", art: "retail" },
+  { name: "Sourcing & Supply", body: "Reliable sourcing and distribution that keep quality consistent at scale.", grad: "linear-gradient(135deg,#EAF7F1,#D6F0E4)", art: "supply" },
 ];
 
 const principles = [
@@ -108,9 +109,11 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div
-              className="aspect-[4/3] w-full rounded-4xl border border-line/70"
+              className="flex aspect-[4/3] w-full items-center justify-center rounded-4xl border border-line/70"
               style={{ background: "linear-gradient(135deg,#EAF1FB,#DDE9F8 50%,#E9E2FB)" }}
-            />
+            >
+              <CraftArt className="w-3/4 max-w-sm" />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -138,7 +141,11 @@ export default function HomePage() {
             {sectors.map((s, i) => (
               <Reveal key={s.name} delay={i * 0.07}>
                 <div className="flex h-full flex-col overflow-hidden rounded-4xl bg-white">
-                  <div className="aspect-[16/10] w-full" style={{ background: s.grad }} />
+                  <div className="flex aspect-[16/10] w-full items-center justify-center" style={{ background: s.grad }}>
+                    {s.art === "brand" && <BrandArt className="w-2/5 max-w-[8rem]" />}
+                    {s.art === "retail" && <RetailArt className="w-2/5 max-w-[8rem]" />}
+                    {s.art === "supply" && <SupplyArt className="w-2/5 max-w-[8rem]" />}
+                  </div>
                   <div className="p-8">
                     <h3 className="font-display text-display-md font-semibold text-ink">{s.name}</h3>
                     <p className="mt-3 font-sans text-[0.95rem] leading-relaxed text-ink-mute">{s.body}</p>
