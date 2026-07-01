@@ -12,27 +12,17 @@ export default function Wordmark({
   return (
     <Link
       href="/"
-      aria-label="Beyolite LLC — Home"
-      className={cn("inline-flex items-center gap-2.5 select-none", className)}
+      aria-label="Beyolite — Home"
+      className={cn("inline-flex items-center gap-2 select-none", className)}
     >
-      <LogoMark className="h-7 w-7" rounded={8} />
-      <span className="inline-flex items-baseline gap-1.5">
-        <span
-          className={cn(
-            "font-display text-[1.3rem] font-bold leading-none tracking-[-0.02em]",
-            inverted ? "text-paper" : "text-ink"
-          )}
-        >
-          Beyolite
-        </span>
-        <span
-          className={cn(
-            "font-sans text-[0.6rem] font-semibold uppercase tracking-[0.16em]",
-            inverted ? "text-paper/50" : "text-ink-mute"
-          )}
-        >
-          LLC
-        </span>
+      <LogoMark className="h-6 w-6" rounded={7} />
+      <span
+        className={cn(
+          "font-display text-[1.15rem] font-semibold leading-none tracking-[-0.02em]",
+          inverted ? "text-white" : "text-ink"
+        )}
+      >
+        Beyolite
       </span>
     </Link>
   );
